@@ -14,11 +14,10 @@ Necessary Parameters
 
 ------------
 
-    :ndim: **integer** The CV dimension or the atom's dimension.  When the *clustermethod* is "coordinate", the *ndim* must equal to atom * 3. And when other cluster method is used, the *ndim* must be the *ncv*
     :ncluster: **integer** The number of microstates(cluster number) to run cluster
     :lagstep: **integer**  The lag step of building msm
     :nstate: **integer** The number of macrostates to do the coarse grain
-    :ifreadcoor: **logical** If true, read the trajs from &traj namelist; if false, read the information from the cluster result
+    :ifreadcoordinate: **logical** If true, read the trajs from &traj namelist; if false, read the information from the cluster result
     :startstate: **integer** The index of start state of runing TPT analysis
     :endstate: **integer** The index of end state of runing TPT analysis
 
@@ -26,6 +25,7 @@ Optional Parameters
 
 ------------
 
+    :inonlyrunclustering: **logical** If true, it will only run clstering module and "ncluster", "lagstep", "startstate" and "endstate" don't need to be specified. 
     :clustermethod: **character** The cluster method. Default cluster method is "kmeans++"  :cite:`arthur2007k`, the other method "kmedoids" :cite:`park2009simple`, "coordinate" is supported. When the "coordinate" method is used, the *coorfiles* in *trajs* namelist AMBER NETCDF format must be provided. 
     :clustercycle: **integer** The maximum number of iteration to perform cluster. Default number is 600. 
     :cutnumber: **integer** Strip the cluster which has number less than the cutnumber. Default is zero which means doesn't strip any cluster.
@@ -46,7 +46,6 @@ Necessary Parameters
 
 ---------------
 
-    :ncv: **integer** The dimension of collective variables in the input trajectory.
     :cvsfiles: **array of character** The input files of the collective variables. The order of file must follow the increased temperature.
     :kelvinarray: **array of double precision** If the *kelvinarray* parameter has only one value, then all the input file has same temperature. If the *kelevinarray* parameter has multiple values, then the *numFileLevel* parameter must be specifed
 
@@ -66,7 +65,6 @@ Example
 The example of input file for MSM analyze shows below ::
 
     &msm
-        ndim=2, 
         ncluster=800, 
         lagstep=20, 
         nstate=12, 
@@ -76,7 +74,6 @@ The example of input file for MSM analyze shows below ::
     /
 
     &trajs
-        ncv=2
         kelvinarray=300
         cvsfiles="sim1/cvfile", "sim2/cvfile"
         coorfiles = "sim1/mdcrd.nc", "sim2/mdcrd.nc"

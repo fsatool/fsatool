@@ -74,7 +74,7 @@ Pre-prepared files
 To start this tutorial, we need a **prmtop** file and a **coordinates** file. You can use the **Leap** program in AMBER to
 generate them ( If you have any questions, you can refer to the AMBER 
 tutorial: http://ambermd.org/tutorials/basic/tutorial0/index.htm ), or click
-:download:`ala.top <..\\..\\files\\ala.top>` :download:`ala.rst <..\\..\\files\\ala.rst>` to download the files.
+:download:`ala.top <C:\\Users\\zhz\\Desktop\\sphinx\\files\\ala.top>` :download:`ala.rst <C:\\Users\\zhz\\Desktop\\sphinx\\files\\ala.rst>` to download the files.
 
 Prepare the input file
 ==========================
@@ -151,12 +151,12 @@ in REMD replicas is set to 500000 steps(``exchangestep=500000``). The exchange s
 (``ssngrid=60, 60``). The other parameters of **Mixing REMD** can see :doc:`../SamplingModule/Mixing_REMD`. 
 
 Now we have prepared all the information for input file. We should submit this task to GPUs for running. Here we provide
-a :download:`job.sh <..\\..\\files\\job.sh>` file for submitting this task. 
+a :download:`job.sh <C:\\Users\\zhz\\Desktop\\sphinx\\files\\job.sh>` file for submitting this task. 
 
 Running the simulation
 ==============================
-We have prepared three files for running the simulation: :download:`ala.top <..\\..\\files\\ala.top>` 
-:download:`ala.rst <..\\..\\files\\ala.rst>` and :download:`job.sh <..\\..\\files\\job.sh>`. Now we can submit this task by
+We have prepared three files for running the simulation: :download:`ala.top <C:\\Users\\zhz\\Desktop\\sphinx\\files\\ala.top>` 
+:download:`ala.rst <C:\\Users\\zhz\\Desktop\\sphinx\\files\\ala.rst>` and :download:`job.sh <C:\\Users\\zhz\\Desktop\\sphinx\\files\\job.sh>`. Now we can submit this task by
 typing:
 
 ::
@@ -253,7 +253,7 @@ Free energy of unbiased replicas
 -------------------------------------
 
 You can plot the free energy landscape of Alanine dipeptide at 300K by using a CPPTRAJ 
-scripy :download:`cpptraj.log <..\\..\\files\\cpptraj.log>`.
+scripy :download:`cpptraj.log <C:\\Users\\zhz\\Desktop\\sphinx\\files\\cpptraj.log>`.
 
 ::
 
@@ -269,7 +269,7 @@ Adaptive biasing potential of biased replica
 ------------------------------------------------
 
 You can plot the adaptive biasing potential of biased replica by using a python 
-scripy :download:`plot_surfacedata.py <..\\..\\files\\plot_surfacedata.py>`.
+scripy :download:`plot_surfacedata.py <C:\\Users\\zhz\\Desktop\\sphinx\\files\\plot_surfacedata.py>`.
 
 ::
 

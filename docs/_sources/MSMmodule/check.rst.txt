@@ -20,8 +20,6 @@ Necessary Parameters
 
     :checkmethod: **character** The module only supports "timescales" now
     :datafile: **character** The data file, after runing the `msm`, the `cluster_forcheck.txt` will be generated.
-    :nsnap: **integer** the number of frames
-    :ncluster: **integer** the nubmer of cluster
     :lagstart: **integer** the start lag time 
     :lagend: **integer** the end lag time
 
@@ -30,8 +28,8 @@ Optional Parameters
 ------------------------
 
     :nits: **integer** The `nits` first timescales will be computed. Default values is 5
-    :lagfactor: **double precesion** This parameter decides how many lag time needs be to calculated. Default values is 1, which means that lagtime needs to be computed is (lagstart, lagstart+1, lagstart+2, ..., lagend). Otherwise, the lagtime needs to be computed are (lagstart, ceiling(lagstart*lagfactor), ceiling(ceiling(lagstart*lagfactor)*lagfactor) ,... )
-
+    :lagoffset: **double precesion** This parameter decides how many lag time needs be to calculated. Default values is 1, which means that lagtime needs to be computed is (lagstart, lagstart+lagoffset*1, lagstart+lagoffset*2, ..., lagend). 
+    
 
 Example 
 ----------------
@@ -41,8 +39,6 @@ The example of input file for check shows below ::
     &check
     checkmethod="timescales", 
     datafile="../info/cluster_forcheck.txt", 
-    nsnap=200000, 
-    ncluster=300,
     lagstart=1, 
     lagend=25
     /

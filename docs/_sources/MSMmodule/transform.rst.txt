@@ -10,8 +10,6 @@ The `transform` namelist has following parameters
 
     :datafile: **character** The data needed to do the PCA or TICA analysis
     :transformmethod: **character** PCA or TICA
-    :nsnap:  **integer** the total number of snapshot of the data
-    :nfeature: **integer**  number of features of data
     :ncomponent: **integer** number of component needed to be extracted
     :lagtime: For TICA analyzing, the lagtime needs to be specified
 
@@ -23,8 +21,6 @@ The example of transform namelist shows below ::
     &lumping
         datafile = "data.txt"
         transformmethod = "pca"
-        nsnap = 5000
-        nfeature = 2
         ncomponent = 1
     /
 

@@ -210,22 +210,22 @@
 <dt class="field-odd">datafile</dt>
 <dd class="field-odd"><p><strong>characther</strong> The data file</p>
 </dd>
-<dt class="field-even">ndim</dt>
-<dd class="field-even"><p><strong>integer</strong> The dimension of data file</p>
-</dd>
-<dt class="field-odd">nsnap</dt>
-<dd class="field-odd"><p><strong>integer</strong> The frames(snaps) of data</p>
-</dd>
 </dl>
 <p>Optional Parameters</p>
 <hr class="docutils" />
 <blockquote>
 <div><dl class="field-list simple">
 <dt class="field-odd">clustercycle</dt>
-<dd class="field-odd"><p>the maximum number of steps to do the clustering</p>
+<dd class="field-odd"><p>The maximum number of steps to do the clustering</p>
 </dd>
-<dt class="field-even">trajtype</dt>
-<dd class="field-even"><p>the trajectory type of the input file.</p>
+<dt class="field-even">randomseed</dt>
+<dd class="field-even"><p>The random seed for selecting initial clustering center</p>
+</dd>
+<dt class="field-odd">trajtype</dt>
+<dd class="field-odd"><p>The trajectory type of the input file.</p>
+</dd>
+<dt class="field-even">clusteratomindex</dt>
+<dd class="field-even"><p>The atomic number of the atoms used for clustering. The default is all atomic coordinates.</p>
 </dd>
 </dl>
 </div></blockquote>
@@ -238,8 +238,7 @@
     <span class="n">clustercycle</span> <span class="o">=</span> <span class="mi">200</span><span class="p">,</span>
     <span class="n">clustermethod</span><span class="o">=</span><span class="s2">&quot;kmeans&quot;</span><span class="p">,</span>
     <span class="n">datafile</span><span class="o">=</span><span class="s2">&quot;data.txt&quot;</span><span class="p">,</span>
-    <span class="n">ndim</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
-    <span class="n">nsnap</span> <span class="o">=</span> <span class="mi">100000</span>
+    <span class="n">clusteratomindex</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">54</span><span class="p">,</span><span class="mi">78</span><span class="p">,</span><span class="mi">93</span>
 <span class="o">/</span>
 </pre></div>
 </div>

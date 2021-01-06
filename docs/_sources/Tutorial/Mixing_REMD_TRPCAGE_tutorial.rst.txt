@@ -136,7 +136,7 @@ integers following ``cv_i`` keyword  which represents the indexes of atoms. For 
 please refer to AMBER18: https://ambermd.org/doc12/Amber18.pdf.
 
 The input file of Mixing REMD is similar to the :doc:`Mixing_REMD_ALA_tutorial`. Here we provide
-a :download:`job.sh <..\\..\\files\\trpzip2\\job.sh>` file for running the simulation. 
+a :download:`job.sh <C:\\Users\\zhz\\Desktop\\sphinx\\files\\trpzip2\\job.sh>` file for running the simulation. 
 
 ::
 
@@ -146,7 +146,7 @@ Now simulation was start. The total simulation time of each replicas is 2.2 μs.
 of the replica are recorded to a trajectory file every 2 ps and its snapshot is recorded every 20 ps. It will take about two 
 days to run this Mixing REMD. Because we want to analyze the trajectory at 300K, the trajectory file and information file of 
 Mixing-REMD should be extracted and distribute among each temperature. You can download the trajectory and information files of 
-REMD replicas at 300K by click **:download:`Here <..\\..\\files\\trpzip2\\REMD_at_300K.rar>`**.
+REMD replicas at 300K by click **:download:`Here <C:\\Users\\zhz\\Desktop\\sphinx\\files\\trpzip2\\REMD_at_300K.rar>`**.
 
 Markov State Model Analysis 
 ===============================
@@ -338,11 +338,11 @@ Visualization
 We provide some simple scripts to show the representive structure in a cluster of structures. And show the 
 transition pathway according to the flux after analyzing by the MSM module.
 
-:download:`extract_structure.py <..\\..\\files\\trpzip2\\vmd_show.py>`.
+:download:`extract_structure.py <C:\\Users\\zhz\\Desktop\\sphinx\\files\\trpzip2\\vmd_show.py>`.
 
-:download:`vmd_show.py <..\\..\\files\\trpzip2\\vmd_show.rar>`.
+:download:`vmd_show.py <C:\\Users\\zhz\\Desktop\\sphinx\\files\\trpzip2\\vmd_show.rar>`.
 
-:download:`plot_network.py <..\\..\\files\\trpzip2\\plot_network.py>`.
+:download:`plot_network.py <C:\\Users\\zhz\\Desktop\\sphinx\\files\\trpzip2\\plot_network.py>`.
 
 Extract representative structure
 -------------------------------------
@@ -371,7 +371,7 @@ of microstate which at the center of macrostate 7.
    The representative structure of macrostate 7. 
 
 Repeat this step, for each macrostate we take a representative structure diagram. For reference, 
-:download:`here <..\\..\\files\\trpzip2\\figures.rar>` are the representative structure diagrams of all 30 macrostates.
+:download:`here <C:\\Users\\zhz\\Desktop\\sphinx\\files\\trpzip2\\figures.rar>` are the representative structure diagrams of all 30 macrostates.
 
 Plot flux network
 ----------------------

@@ -38,7 +38,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Free energy calculation from SMD" href="SMD_tutorial.html" />
-    <link rel="prev" title="Mixing REMD with FSATOOL" href="Mixing_REMD_ALA_tutorial.html" /> 
+    <link rel="prev" title="Markov State Model" href="Markov%20state%20model.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -108,6 +108,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorial</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Mixing_REMD_ALA_tutorial.html">Mixing REMD with FSATOOL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Markov%20state%20model.html">Markov State Model</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Simulate a Small Peptide and analyze the datas by FSATOOL</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#prepare-the-initial-files-for-simulation">Prepare the initial files for simulation</a><ul>
@@ -319,7 +320,7 @@ of Cα atoms are extracted from the pdb of native structure <a class="reference 
 integers following <code class="docutils literal notranslate"><span class="pre">cv_i</span></code> keyword  which represents the indexes of atoms. For more information,
 please refer to AMBER18: <a class="reference external" href="https://ambermd.org/doc12/Amber18.pdf">https://ambermd.org/doc12/Amber18.pdf</a>.</p>
 <p>The input file of Mixing REMD is similar to the <a class="reference internal" href="Mixing_REMD_ALA_tutorial.html"><span class="doc">Mixing REMD with FSATOOL</span></a>. Here we provide
-a <a class="reference download internal" download="" href="../_downloads/4b0221bb1b25db71338595e9e31672d4/job.sh"><code class="xref download docutils literal notranslate"><span class="pre">job.sh</span></code></a> file for running the simulation.</p>
+a <a class="reference download internal" download="" href="../_downloads/e4aa7871ed6d74a82e78b74d4409758b/job.sh"><code class="xref download docutils literal notranslate"><span class="pre">job.sh</span></code></a> file for running the simulation.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">sbatch</span> <span class="n">job</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
@@ -327,7 +328,7 @@ a <a class="reference download internal" download="" href="../_downloads/4b0221b
 of the replica are recorded to a trajectory file every 2 ps and its snapshot is recorded every 20 ps. It will take about two
 days to run this Mixing REMD. Because we want to analyze the trajectory at 300K, the trajectory file and information file of
 Mixing-REMD should be extracted and distribute among each temperature. You can download the trajectory and information files of
-REMD replicas at 300K by click <strong>:download:`Here &lt;....\files\trpzip2\REMD_at_300K.rar&gt;`</strong>.</p>
+REMD replicas at 300K by click <strong>:download:`Here &lt;C:\Users\zhz\Desktop\sphinx\files\trpzip2\REMD_at_300K.rar&gt;`</strong>.</p>
 </div>
 </div>
 <div class="section" id="markov-state-model-analysis">
@@ -486,9 +487,9 @@ pathways can be obtained by performing the TPT module :</p>
 <h2>Visualization<a class="headerlink" href="#visualization" title="Permalink to this headline">¶</a></h2>
 <p>We provide some simple scripts to show the representive structure in a cluster of structures. And show the
 transition pathway according to the flux after analyzing by the MSM module.</p>
-<p><a class="reference download internal" download="" href="../_downloads/8d5fcf4eba72c3bfe92c501f79a2055f/vmd_show.py"><code class="xref download docutils literal notranslate"><span class="pre">extract_structure.py</span></code></a>.</p>
-<p><a class="reference download internal" download="" href="../_downloads/871a2a27a6f4faa9cc96680accca6a83/vmd_show.rar"><code class="xref download docutils literal notranslate"><span class="pre">vmd_show.py</span></code></a>.</p>
-<p><a class="reference download internal" download="" href="../_downloads/f37b08afa6db176ff8968898060c2226/plot_network.py"><code class="xref download docutils literal notranslate"><span class="pre">plot_network.py</span></code></a>.</p>
+<p><a class="reference download internal" download="" href="../_downloads/37f6fad360328ff9fe7118fd6d236844/vmd_show.py"><code class="xref download docutils literal notranslate"><span class="pre">extract_structure.py</span></code></a>.</p>
+<p><a class="reference download internal" download="" href="../_downloads/2b334b3c71311e285b32be93f78dbd46/vmd_show.rar"><code class="xref download docutils literal notranslate"><span class="pre">vmd_show.py</span></code></a>.</p>
+<p><a class="reference download internal" download="" href="../_downloads/b5073fd54f9d58557cf07d8fee40a1c0/plot_network.py"><code class="xref download docutils literal notranslate"><span class="pre">plot_network.py</span></code></a>.</p>
 <div class="section" id="extract-representative-structure">
 <h3>Extract representative structure<a class="headerlink" href="#extract-representative-structure" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">python</span> <span class="n">extract_structure</span><span class="o">.</span><span class="n">py</span>
@@ -507,7 +508,7 @@ of microstate which at the center of macrostate 7.</p>
 <p class="caption"><span class="caption-text">The representative structure of macrostate 7.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
 </div>
 <p>Repeat this step, for each macrostate we take a representative structure diagram. For reference,
-<a class="reference download internal" download="" href="../_downloads/15df11ae9db87b69a3451b225bd56605/figures.rar"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a> are the representative structure diagrams of all 30 macrostates.</p>
+<a class="reference download internal" download="" href="../_downloads/d89146441b2591d577596fb8d0288389/figures.rar"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a> are the representative structure diagrams of all 30 macrostates.</p>
 </div>
 <div class="section" id="plot-flux-network">
 <h3>Plot flux network<a class="headerlink" href="#plot-flux-network" title="Permalink to this headline">¶</a></h3>
@@ -557,7 +558,7 @@ states. Then adjusting the size of some arrows, and finally we can get a beautif
         <a href="SMD_tutorial.html" class="btn btn-neutral float-right" title="Free energy calculation from SMD" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Mixing_REMD_ALA_tutorial.html" class="btn btn-neutral float-left" title="Mixing REMD with FSATOOL" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Markov%20state%20model.html" class="btn btn-neutral float-left" title="Markov State Model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

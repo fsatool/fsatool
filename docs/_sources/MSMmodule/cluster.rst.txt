@@ -15,15 +15,15 @@ Necessary Parameters
 :ncluster: **integer** The cluster number needed to be specified.
 :clustermethod: **characther** The clustermethod, the "kmeans", "kmedoids","coordinate"  are supported. When the *clustermethod* is "coordinate",  the *trajtype* must be supported. The "coordiante" method trys to calcualte the **RMSD** between any two frames, and using the distance matrix to do the clustering. When the "nsnap" is too large to saved in the memory, the **RMSD** is calcuated on the fly and this may be slow, but the MPI version is supported.
 :datafile: **characther** The data file
-:ndim: **integer** The dimension of data file
-:nsnap: **integer** The frames(snaps) of data
 
 Optional Parameters
 
 -------------------
 
-    :clustercycle: the maximum number of steps to do the clustering
-    :trajtype: the trajectory type of the input file.
+    :clustercycle: The maximum number of steps to do the clustering
+    :randomseed: The random seed for selecting initial clustering center 
+    :trajtype: The trajectory type of the input file.
+    :clusteratomindex: The atomic number of the atoms used for clustering. The default is all atomic coordinates.
 
 Example
 ------------
@@ -34,8 +34,7 @@ The example of cluster namelist shows below ::
         clustercycle = 200, 
         clustermethod="kmeans", 
         datafile="data.txt",
-        ndim = 2, 
-        nsnap = 100000
+        clusteratomindex=5,16,40,54,78,93
     /
 
 Input File Format

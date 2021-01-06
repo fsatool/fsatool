@@ -1,0 +1,520 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Markov State Model &mdash; FSATOOL 1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Simulate a Small Peptide and analyze the datas by FSATOOL" href="Mixing_REMD_TRPCAGE_tutorial.html" />
+    <link rel="prev" title="Mixing REMD with FSATOOL" href="Mixing_REMD_ALA_tutorial.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> FSATOOL
+          
+
+          
+            
+            <img src="../_static/fsatool_logo.jpg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html">Installation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../SamplingModule/index.html">Sampling module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../MSMmodule/index.html">MSM module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Extractmodule.html">Extract trajectory module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Visualization.html">Visualization</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorial</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Mixing_REMD_ALA_tutorial.html">Mixing REMD with FSATOOL</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Markov State Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cluster">cluster</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dimensional-array">2-dimensional array</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#coordinates-clustering">Coordinates Clustering</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#lumping">lumping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tpt">TPT</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Mixing_REMD_TRPCAGE_tutorial.html">Simulate a Small Peptide and analyze the datas by FSATOOL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SMD_tutorial.html">Free energy calculation from SMD</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Reference.html">Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">FSATOOL</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Tutorial</a> &raquo;</li>
+        
+      <li>Markov State Model</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Tutorial/Markov state model.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="markov-state-model">
+<h1>Markov State Model<a class="headerlink" href="#markov-state-model" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="cluster">
+<h2>cluster<a class="headerlink" href="#cluster" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="dimensional-array">
+<h3>2-dimensional array<a class="headerlink" href="#dimensional-array" title="Permalink to this headline">¶</a></h3>
+<p>The tested data are points distributed in a circle <a class="reference download internal" download="" href="../_downloads/6f2ea219c6d55aec247a7a262d0a94ca/data.txt"><code class="xref download docutils literal notranslate"><span class="pre">data.txt</span></code></a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="mf">0.35941231475718038</span>      <span class="mf">0.84237709893632018</span>
+<span class="o">-</span><span class="mf">9.4136931521054706E-002</span>  <span class="mf">0.69380591026773419</span>
+ <span class="mf">0.67511592876630078</span>      <span class="mf">0.17903400140936512</span>
+ <span class="mf">0.62728929764629149</span>      <span class="mf">9.4346468131488476E-002</span>
+<span class="o">-</span><span class="mf">5.9843035099675884E-004</span> <span class="o">-</span><span class="mf">0.56974671645607766</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>There are a total of 100,000 rows of data. They are clustered to 100 states by kmeans. The input file named “cluster.in” is shown below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&amp;</span><span class="n">cluster</span>
+    <span class="n">ncluster</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">clustermethod</span><span class="o">=</span><span class="s2">&quot;kmeans&quot;</span><span class="p">,</span> <span class="n">datafile</span><span class="o">=</span><span class="s2">&quot;data.txt&quot;</span><span class="p">,</span> <span class="n">ndim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">nsnap</span><span class="o">=</span><span class="mi">100000</span>
+<span class="o">/</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">fsatool</span> <span class="n">msm</span> <span class="n">cluster</span>
+</pre></div>
+</div>
+<p>The clustering results are stored in “cluster.out” by default. The output file as shown below:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 43%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>cluster index</p></th>
+<th class="head"><p>CenterSnap index</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>80</p></td>
+<td><p>25479</p></td>
+</tr>
+<tr class="row-odd"><td><p>56</p></td>
+<td><p>41168</p></td>
+</tr>
+<tr class="row-even"><td><p>14</p></td>
+<td><p>58238</p></td>
+</tr>
+<tr class="row-odd"><td><p>34</p></td>
+<td><p>18268</p></td>
+</tr>
+<tr class="row-even"><td><p>94</p></td>
+<td><p>55611</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p><strong>cluster index</strong> : the cluster index to which the frams belongs.</p></li>
+<li><p><strong>CenterSnap Index</strong> : the center snap index of current cluster.</p></li>
+</ul>
+<p>This script can draw the clustering results in different colors <a class="reference download internal" download="" href="../_downloads/19ad2589e3fba47f6ced82dc05fa76f8/plot.py"><code class="xref download docutils literal notranslate"><span class="pre">plot.py.txt</span></code></a>.
+The center of each cluster is marked with the symbol “X”.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">python</span> <span class="n">plot</span><span class="o">.</span><span class="n">py</span> <span class="n">cluster</span><span class="o">.</span><span class="n">out</span>
+</pre></div>
+</div>
+<div class="figure align-center" id="id1">
+<a class="reference external image-reference" href="C:\Users\zhz\Pictures\sphinx\msm\cluster_2d.png"><img alt="../_images/cluster_2d.png" src="../_images/cluster_2d.png" style="width: 198.4px; height: 186.4px;" /></a>
+<p class="caption"><span class="caption-text">The clustering result.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="coordinates-clustering">
+<h3>Coordinates Clustering<a class="headerlink" href="#coordinates-clustering" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference download internal" download="" href="../_downloads/61ea7a89976302ea2d3f903e743513b1/test.nc"><code class="xref download docutils literal notranslate"><span class="pre">test.nc</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/885008015caaccab824c1e47d2591ddd/protein.prmtop"><code class="xref download docutils literal notranslate"><span class="pre">protein.prmtop</span></code></a></p>
+<p>This trajectory has 1000 snapshots. They are clustered to 10 states by calculating the distance matrix:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&amp;</span><span class="n">cluster</span>
+    <span class="n">ncluster</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">clustermethod</span><span class="o">=</span><span class="s2">&quot;coordinate&quot;</span><span class="p">,</span> <span class="n">datafile</span><span class="o">=</span><span class="s2">&quot;test.nc&quot;</span><span class="p">,</span> <span class="n">trajtype</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">nsnap</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">ndim</span><span class="o">=</span><span class="mi">1512</span>
+<span class="o">/</span>
+</pre></div>
+</div>
+<p>This molecular has 504 atoms, and <code class="docutils literal notranslate"><span class="pre">ndim</span></code> is set to three times the atomic number.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">fsatool</span> <span class="n">msm</span> <span class="n">cluster</span>
+</pre></div>
+</div>
+<p>The “cluster.out” file is similar as before. In addition, the snapshots in each state are stored in different files named
+“cluster_*.nc”.</p>
+<p>We provide some simple scripts to show the representive structure of each
+state <a class="reference download internal" download="" href="../_downloads/b5073fd54f9d58557cf07d8fee40a1c0/plot_network.py"><code class="xref download docutils literal notranslate"><span class="pre">plot_network.py</span></code></a>.
+The gray lines represent different Backbone forms, and the Cartoon
+structure shows the center structure in this cluster.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">python</span> <span class="n">vmd_show</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">p</span> <span class="n">protein</span><span class="o">.</span><span class="n">prmtop</span> <span class="o">-</span><span class="n">t</span> <span class="n">cluster_1</span><span class="o">.</span><span class="n">nc</span>
+</pre></div>
+</div>
+<div class="figure align-left" id="id2">
+<a class="reference external image-reference" href="C:\Users\zhz\Pictures\sphinx\msm\cluster_1.png"><img alt="../_images/cluster_1.png" src="../_images/cluster_1.png" style="width: 295.65px; height: 329.23px;" /></a>
+<p class="caption"><span class="caption-text">The representive structure of cluster_1.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-right" id="id3">
+<a class="reference external image-reference" href="C:\Users\zhz\Pictures\sphinx\msm\cluster_2.png"><img alt="../_images/cluster_2.png" src="../_images/cluster_2.png" style="width: 340.0px; height: 330.48px;" /></a>
+<p class="caption"><span class="caption-text">The representive structure of cluster_2.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+<hr class="docutils" />
+<p>The input file “check.in”:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&amp;</span><span class="n">check</span>
+    <span class="n">checkmethod</span><span class="o">=</span><span class="s2">&quot;timescales&quot;</span><span class="p">,</span> <span class="n">datafile</span><span class="o">=</span><span class="s2">&quot;cluster_forcheck.txt&quot;</span><span class="p">,</span>
+    <span class="n">lagstart</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">lagend</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">lagOffset</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">nits</span><span class="o">=</span><span class="mi">5</span>
+<span class="o">/</span>
+</pre></div>
+</div>
+<p>Implied timescale calculated by FSATOOL.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 21%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>lagStep</p></th>
+<th class="head"><p>it1</p></th>
+<th class="head"><p>it2</p></th>
+<th class="head"><p>it3</p></th>
+<th class="head"><p>it4</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>15</p></td>
+<td><p>7.725447</p></td>
+<td><p>6.623587</p></td>
+<td><p>5.942975</p></td>
+<td><p>5.753566</p></td>
+</tr>
+<tr class="row-odd"><td><p>20</p></td>
+<td><p>7.940380</p></td>
+<td><p>6.831861</p></td>
+<td><p>6.127305</p></td>
+<td><p>5.926501</p></td>
+</tr>
+<tr class="row-even"><td><p>25</p></td>
+<td><p>8.105325</p></td>
+<td><p>6.993178</p></td>
+<td><p>6.271476</p></td>
+<td><p>6.066478</p></td>
+</tr>
+<tr class="row-odd"><td><p>30</p></td>
+<td><p>8.243472</p></td>
+<td><p>7.124332</p></td>
+<td><p>6.389506</p></td>
+<td><p>6.180738</p></td>
+</tr>
+<tr class="row-even"><td><p>35</p></td>
+<td><p>8.358990</p></td>
+<td><p>7.237307</p></td>
+<td><p>6.495447</p></td>
+<td><p>6.285877</p></td>
+</tr>
+<tr class="row-odd"><td><p>40</p></td>
+<td><p>8.459769</p></td>
+<td><p>7.333163</p></td>
+<td><p>6.585856</p></td>
+<td><p>6.377492</p></td>
+</tr>
+<tr class="row-even"><td><p>45</p></td>
+<td><p>8.549108</p></td>
+<td><p>7.419754</p></td>
+<td><p>6.667117</p></td>
+<td><p>6.461862</p></td>
+</tr>
+<tr class="row-odd"><td><p>50</p></td>
+<td><p>8.628374</p></td>
+<td><p>7.497285</p></td>
+<td><p>6.740015</p></td>
+<td><p>6.531859</p></td>
+</tr>
+<tr class="row-even"><td><p>55</p></td>
+<td><p>8.704886</p></td>
+<td><p>7.569782</p></td>
+<td><p>6.806971</p></td>
+<td><p>6.593791</p></td>
+</tr>
+<tr class="row-odd"><td><p>60</p></td>
+<td><p>8.770139</p></td>
+<td><p>7.633589</p></td>
+<td><p>6.867345</p></td>
+<td><p>6.649341</p></td>
+</tr>
+</tbody>
+</table>
+<p>We use <em>PYEMMA</em> software as a comparison. The execution script of the <strong>check</strong> module can be downloaded here <a class="reference download internal" download="" href="../_downloads/b695d91c3762ea0952e198608841d845/test_pyemma_impilied_scale.py"><code class="xref download docutils literal notranslate"><span class="pre">test_pyemma_impilied_scale.py</span></code></a>.
+After running this script, we got a file called <a class="reference download internal" download="" href="../_downloads/2d5f0cbd582070cb4108eb66d9ed21ab/pyemma_impliled_timescale.txt"><code class="xref download docutils literal notranslate"><span class="pre">pyemma_impliled_timescale.txt</span></code></a>. You can see that they got the same result.</p>
+<div class="figure align-center" id="id4">
+<a class="reference external image-reference" href="C:\Users\zhz\Pictures\sphinx\msm\FSATOOL_timescale1.png"><img alt="../_images/FSATOOL_timescale1.png" src="../_images/FSATOOL_timescale1.png" style="width: 577.5px; height: 403.0px;" /></a>
+<p class="caption"><span class="caption-text">Implied timescale calculated by Pyemma.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+</div>
+<div class="section" id="lumping">
+<h2>lumping<a class="headerlink" href="#lumping" title="Permalink to this headline">¶</a></h2>
+<p>The file of tpm matrix for lumping can be download by clicking <a class="reference download internal" download="" href="../_downloads/d143f4fb835bb16d3b926734c8fea244/tpmlarge.txt"><code class="xref download docutils literal notranslate"><span class="pre">tpmlarge.txt</span></code></a></p>
+<p>The lumpingmethod we selected here is “pccaplus”, then the data file should contains the transition probability matrix.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&amp;</span><span class="n">lumping</span>
+    <span class="n">datafile</span> <span class="o">=</span> <span class="s2">&quot;tpmlarge.txt&quot;</span>
+    <span class="n">ncluster</span><span class="o">=</span><span class="mi">1000</span>
+    <span class="n">nstate</span><span class="o">=</span><span class="mi">10</span>
+    <span class="n">lumpingmethod</span> <span class="o">=</span> <span class="s2">&quot;pccaplus&quot;</span>
+<span class="o">/</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">fsatool</span> <span class="n">msm</span> <span class="n">lumping</span>
+</pre></div>
+</div>
+<p>1000 microstates are lumped into 10 macrostates by PCCA+. The result of lumping is displayed in the terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">********************************************************************************</span>
+                             <span class="n">PCCAplus</span> <span class="n">Coarse</span> <span class="n">Grain</span>
+<span class="n">call</span> <span class="n">Neled</span><span class="o">-</span><span class="n">Mead</span> <span class="n">method</span> <span class="n">to</span> <span class="n">minimize</span> <span class="n">the</span> <span class="n">func</span>
+<span class="n">icount</span><span class="p">,</span> <span class="n">numres</span><span class="p">:</span>        <span class="mi">2147</span>           <span class="mi">1</span>
+<span class="n">membership</span> <span class="n">functions</span><span class="p">:</span>
+<span class="n">cluster</span> <span class="n">index</span> <span class="n">belong</span> <span class="n">to</span> <span class="n">macro</span> <span class="n">states</span> <span class="n">index</span><span class="p">:</span>
+   <span class="mi">2</span>   <span class="mi">7</span>   <span class="mi">4</span>   <span class="mi">6</span>   <span class="mi">2</span>   <span class="mi">8</span>   <span class="mi">2</span>   <span class="mi">4</span>   <span class="mi">3</span>  <span class="mi">10</span>   <span class="mi">2</span>   <span class="mi">2</span>  <span class="mi">10</span>   <span class="mi">4</span>   <span class="mi">8</span>   <span class="mi">2</span>   <span class="mi">6</span>   <span class="mi">7</span>   <span class="mi">4</span>   <span class="mi">2</span>
+   <span class="mi">7</span>   <span class="mi">2</span>   <span class="mi">6</span>   <span class="mi">2</span>   <span class="mi">6</span>   <span class="mi">4</span>   <span class="mi">2</span>   <span class="mi">1</span>   <span class="mi">2</span>   <span class="mi">6</span>   <span class="mi">2</span>   <span class="mi">4</span>   <span class="mi">2</span>   <span class="mi">3</span>   <span class="mi">2</span>   <span class="mi">6</span>  <span class="mi">10</span>   <span class="mi">7</span>   <span class="mi">6</span>   <span class="mi">2</span>
+   <span class="mi">5</span>   <span class="mi">7</span>   <span class="mi">2</span>   <span class="mi">2</span>   <span class="mi">6</span>   <span class="mi">7</span>   <span class="mi">8</span>   <span class="mi">9</span>   <span class="mi">2</span>  <span class="mi">10</span>   <span class="mi">2</span>   <span class="mi">7</span>   <span class="mi">4</span>  <span class="mi">10</span>   <span class="mi">6</span>   <span class="mi">4</span>   <span class="mi">6</span>   <span class="mi">6</span>   <span class="mi">1</span>   <span class="mi">1</span>
+   <span class="o">...</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>We use MSMtools to test this result. Here is the script for lumping by using
+<a class="reference download internal" download="" href="../_downloads/ec9cccc2d92faa9f5301a5efb0b01b36/msmtools.py"><code class="xref download docutils literal notranslate"><span class="pre">msmtools.py</span></code></a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">python</span> <span class="n">msmtools</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>After running the script, we got a file called <a class="reference download internal" download="" href="../_downloads/272191f7f4932c2150acbac58ce075e0/pyemma_pcca_save.json"><code class="xref download docutils literal notranslate"><span class="pre">pyemma_pcca_save.json</span></code></a>. Through comparison, it was found
+that the two programs got the same result.</p>
+</div>
+<div class="section" id="tpt">
+<h2>TPT<a class="headerlink" href="#tpt" title="Permalink to this headline">¶</a></h2>
+<p>The input file of <strong>tpt.in</strong> :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&amp;</span><span class="n">tpt</span>
+    <span class="n">tpmfile</span> <span class="o">=</span> <span class="s2">&quot;tpm.txt&quot;</span>
+    <span class="n">statefile</span> <span class="o">=</span> <span class="s2">&quot;states.txt&quot;</span>
+    <span class="n">startstate</span> <span class="o">=</span> <span class="mi">25</span><span class="p">,</span><span class="mi">27</span><span class="p">,</span><span class="mi">30</span>
+    <span class="n">endstate</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="o">/</span>
+</pre></div>
+</div>
+<p>Enter the following command in the terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">fsatool</span> <span class="n">msm</span> <span class="n">tpt</span>
+</pre></div>
+</div>
+<p>The results obtained are as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                                  <span class="n">TPT</span> <span class="n">Analysis</span>
+<span class="n">number</span> <span class="n">of</span> <span class="n">micro</span> <span class="n">state</span><span class="p">:</span>       <span class="mi">20</span>
+<span class="n">number</span> <span class="n">of</span> <span class="n">macro</span> <span class="n">state</span><span class="p">:</span>    <span class="mi">20</span>
+<span class="nb">int</span> <span class="n">state</span><span class="p">:</span>    <span class="mi">1</span>
+<span class="n">end</span> <span class="n">state</span><span class="p">:</span>   <span class="mi">19</span>
+<span class="n">forward</span> <span class="n">committor</span><span class="p">:</span>   <span class="mf">0.00000000</span>  <span class="mf">0.16257487</span>  <span class="mf">0.24470868</span>  <span class="mf">0.08274719</span>  <span class="mf">0.12874016</span>  <span class="mf">0.15932281</span>  <span class="mf">0.13109575</span>  <span class="mf">0.12524852</span>  <span class="mf">0.14558799</span>  <span class="mf">0.12504382</span>  <span class="mf">0.07081371</span>  <span class="mf">0.13357555</span>  <span class="mf">0.13807499</span>  <span class="mf">0.14374672</span>  <span class="mf">0.01853454</span>  <span class="mf">0.15305353</span>  <span class="mf">0.24689252</span>  <span class="mf">0.13883476</span>  <span class="mf">1.00000000</span>  <span class="mf">0.04419848</span>
+<span class="n">backward</span> <span class="n">committor</span><span class="p">:</span>   <span class="mf">1.00000000</span>  <span class="mf">0.90994333</span>  <span class="mf">0.86070723</span>  <span class="mf">0.91253659</span>  <span class="mf">0.91782543</span>  <span class="mf">0.91640115</span>  <span class="mf">0.92223424</span>  <span class="mf">0.90451847</span>  <span class="mf">0.88037993</span>  <span class="mf">0.92209524</span>  <span class="mf">0.93084023</span>  <span class="mf">0.91302472</span>  <span class="mf">0.91387084</span>  <span class="mf">0.98155024</span>  <span class="mf">0.91555195</span>  <span class="mf">0.91239316</span>  <span class="mf">0.77968695</span>  <span class="mf">0.90000616</span>  <span class="mf">0.00000000</span>  <span class="mf">0.92423617</span>
+<span class="n">pi</span><span class="p">:</span>   <span class="mf">0.061613</span>  <span class="mf">0.101604</span>  <span class="mf">0.093881</span>  <span class="mf">0.000969</span>  <span class="mf">0.042196</span>  <span class="mf">0.051157</span>  <span class="mf">0.042561</span>  <span class="mf">0.038505</span>  <span class="mf">0.017185</span>  <span class="mf">0.023183</span>  <span class="mf">0.221250</span>  <span class="mf">0.010242</span>  <span class="mf">0.003808</span>  <span class="mf">0.065487</span>  <span class="mf">0.058561</span>  <span class="mf">0.044387</span>  <span class="mf">0.073224</span>  <span class="mf">0.027516</span>  <span class="mf">0.018605</span>  <span class="mf">0.004066</span>
+<span class="n">totalFlux</span><span class="p">:</span>   <span class="mf">0.00685210</span>
+<span class="n">kAB</span><span class="p">:</span>   <span class="mf">0.00765823</span>
+<span class="n">There</span> <span class="n">are</span> <span class="n">total</span>  <span class="mi">51</span> <span class="n">pathways</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">network</span>
+<span class="n">flux</span>     <span class="n">ratio</span>  <span class="n">accumulatedfluxRatio</span>  <span class="n">pathway</span>
+  <span class="mf">0.1866E-02</span>  <span class="mf">0.2723</span>  <span class="mf">0.2723</span>     <span class="mi">1</span>  <span class="mi">3</span> <span class="mi">19</span>
+  <span class="mf">0.1861E-02</span>  <span class="mf">0.2716</span>  <span class="mf">0.5438</span>     <span class="mi">1</span> <span class="mi">19</span>
+  <span class="mf">0.4919E-03</span>  <span class="mf">0.0718</span>  <span class="mf">0.6156</span>     <span class="mi">1</span> <span class="mi">17</span>  <span class="mi">3</span> <span class="mi">19</span>
+  <span class="mf">0.3951E-03</span>  <span class="mf">0.0577</span>  <span class="mf">0.6733</span>     <span class="mi">1</span>  <span class="mi">7</span>  <span class="mi">3</span> <span class="mi">19</span>
+</pre></div>
+</div>
+<p>We use <em>PYEMMA</em> software as a comparison. The execution script of the tpt module can be downloaded here <a class="reference download internal" download="" href="../_downloads/766b7ea02a97d0febac8ec52995c3eec/pyemma_tpt.py"><code class="xref download docutils literal notranslate"><span class="pre">pyemma_tpt.py</span></code></a>.
+After running this script, we got a file called <a class="reference download internal" download="" href="../_downloads/b9f922bc29444d866f60c85ae35d9b50/pyemma_tpt_save.json"><code class="xref download docutils literal notranslate"><span class="pre">pyemma_tpt_save.json</span></code></a>. You can see that they got the same result.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Mixing_REMD_TRPCAGE_tutorial.html" class="btn btn-neutral float-right" title="Simulate a Small Peptide and analyze the datas by FSATOOL" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Mixing_REMD_ALA_tutorial.html" class="btn btn-neutral float-left" title="Mixing REMD with FSATOOL" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2019, FSATOOL Group
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

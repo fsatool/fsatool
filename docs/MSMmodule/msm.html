@@ -203,26 +203,23 @@
 <hr class="docutils" />
 <blockquote>
 <div><dl class="field-list simple">
-<dt class="field-odd">ndim</dt>
-<dd class="field-odd"><p><strong>integer</strong> The CV dimension or the atom’s dimension.  When the <em>clustermethod</em> is “coordinate”, the <em>ndim</em> must equal to atom * 3. And when other cluster method is used, the <em>ndim</em> must be the <em>ncv</em></p>
+<dt class="field-odd">ncluster</dt>
+<dd class="field-odd"><p><strong>integer</strong> The number of microstates(cluster number) to run cluster</p>
 </dd>
-<dt class="field-even">ncluster</dt>
-<dd class="field-even"><p><strong>integer</strong> The number of microstates(cluster number) to run cluster</p>
+<dt class="field-even">lagstep</dt>
+<dd class="field-even"><p><strong>integer</strong>  The lag step of building msm</p>
 </dd>
-<dt class="field-odd">lagstep</dt>
-<dd class="field-odd"><p><strong>integer</strong>  The lag step of building msm</p>
+<dt class="field-odd">nstate</dt>
+<dd class="field-odd"><p><strong>integer</strong> The number of macrostates to do the coarse grain</p>
 </dd>
-<dt class="field-even">nstate</dt>
-<dd class="field-even"><p><strong>integer</strong> The number of macrostates to do the coarse grain</p>
+<dt class="field-even">ifreadcoordinate</dt>
+<dd class="field-even"><p><strong>logical</strong> If true, read the trajs from &amp;traj namelist; if false, read the information from the cluster result</p>
 </dd>
-<dt class="field-odd">ifreadcoor</dt>
-<dd class="field-odd"><p><strong>logical</strong> If true, read the trajs from &amp;traj namelist; if false, read the information from the cluster result</p>
+<dt class="field-odd">startstate</dt>
+<dd class="field-odd"><p><strong>integer</strong> The index of start state of runing TPT analysis</p>
 </dd>
-<dt class="field-even">startstate</dt>
-<dd class="field-even"><p><strong>integer</strong> The index of start state of runing TPT analysis</p>
-</dd>
-<dt class="field-odd">endstate</dt>
-<dd class="field-odd"><p><strong>integer</strong> The index of end state of runing TPT analysis</p>
+<dt class="field-even">endstate</dt>
+<dd class="field-even"><p><strong>integer</strong> The index of end state of runing TPT analysis</p>
 </dd>
 </dl>
 </div></blockquote>
@@ -230,20 +227,23 @@
 <hr class="docutils" />
 <blockquote>
 <div><dl class="field-list">
-<dt class="field-odd">clustermethod</dt>
-<dd class="field-odd"><p><strong>character</strong> The cluster method. Default cluster method is “kmeans++”  <a class="bibtex reference internal" href="../Reference.html#arthur2007k" id="id1">[AV07]</a>, the other method “kmedoids” <a class="bibtex reference internal" href="../Reference.html#park2009simple" id="id2">[PJ09]</a>, “coordinate” is supported. When the “coordinate” method is used, the <em>coorfiles</em> in <em>trajs</em> namelist AMBER NETCDF format must be provided.</p>
+<dt class="field-odd">inonlyrunclustering</dt>
+<dd class="field-odd"><p><strong>logical</strong> If true, it will only run clstering module and “ncluster”, “lagstep”, “startstate” and “endstate” don’t need to be specified.</p>
 </dd>
-<dt class="field-even">clustercycle</dt>
-<dd class="field-even"><p><strong>integer</strong> The maximum number of iteration to perform cluster. Default number is 600.</p>
+<dt class="field-even">clustermethod</dt>
+<dd class="field-even"><p><strong>character</strong> The cluster method. Default cluster method is “kmeans++”  <a class="bibtex reference internal" href="../Reference.html#arthur2007k" id="id1">[AV07]</a>, the other method “kmedoids” <a class="bibtex reference internal" href="../Reference.html#park2009simple" id="id2">[PJ09]</a>, “coordinate” is supported. When the “coordinate” method is used, the <em>coorfiles</em> in <em>trajs</em> namelist AMBER NETCDF format must be provided.</p>
 </dd>
-<dt class="field-odd">cutnumber</dt>
-<dd class="field-odd"><p><strong>integer</strong> Strip the cluster which has number less than the cutnumber. Default is zero which means doesn’t strip any cluster.</p>
+<dt class="field-odd">clustercycle</dt>
+<dd class="field-odd"><p><strong>integer</strong> The maximum number of iteration to perform cluster. Default number is 600.</p>
 </dd>
-<dt class="field-even">lumpingmethod</dt>
-<dd class="field-even"><p><strong>character</strong> The lumping method to do the coarse grain. Default method is “pccaplus” <a class="bibtex reference internal" href="../Reference.html#roblitz2013fuzzy" id="id3">[RoblitzW13]</a>. The “bace” method <a class="bibtex reference internal" href="../Reference.html#bowman2012" id="id4">[Bow12]</a> is supported.</p>
+<dt class="field-even">cutnumber</dt>
+<dd class="field-even"><p><strong>integer</strong> Strip the cluster which has number less than the cutnumber. Default is zero which means doesn’t strip any cluster.</p>
 </dd>
-<dt class="field-odd">tpmmethod</dt>
-<dd class="field-odd"><p><strong>character</strong> The method of how to build the MSM microstate transition matrix. Default method is “reversible”, which use the maximum likelihood probability method <a class="bibtex reference internal" href="../Reference.html#bowman2009" id="id5">[BBBP09]</a>. The other method, “normal” simpliy count the transition times from a cluster to another cluster divided by the counts in the cluster. The “non-reversible” method aggregates counts from cluster <em>i</em> to cluster <em>j</em> and counts from cluster <em>j</em> to cluster <em>i</em>. The total counts then divided by 2 and counts in the cluster. The code of this process shows below:</p>
+<dt class="field-odd">lumpingmethod</dt>
+<dd class="field-odd"><p><strong>character</strong> The lumping method to do the coarse grain. Default method is “pccaplus” <a class="bibtex reference internal" href="../Reference.html#roblitz2013fuzzy" id="id3">[RoblitzW13]</a>. The “bace” method <a class="bibtex reference internal" href="../Reference.html#bowman2012" id="id4">[Bow12]</a> is supported.</p>
+</dd>
+<dt class="field-even">tpmmethod</dt>
+<dd class="field-even"><p><strong>character</strong> The method of how to build the MSM microstate transition matrix. Default method is “reversible”, which use the maximum likelihood probability method <a class="bibtex reference internal" href="../Reference.html#bowman2009" id="id5">[BBBP09]</a>. The other method, “normal” simpliy count the transition times from a cluster to another cluster divided by the counts in the cluster. The “non-reversible” method aggregates counts from cluster <em>i</em> to cluster <em>j</em> and counts from cluster <em>j</em> to cluster <em>i</em>. The total counts then divided by 2 and counts in the cluster. The code of this process shows below:</p>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="n">temp</span> <span class="o">=</span> <span class="p">(</span><span class="n">tcm</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="o">+</span> <span class="n">tcm</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span><span class="o">*</span><span class="mf">0.5d0</span>
 <span class="n">tpm</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="o">=</span> <span class="n">temp</span><span class="o">/</span><span class="nb">sum</span><span class="p">(</span><span class="n">tcm</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="p">:))</span>
 </pre></div>
@@ -259,14 +259,11 @@
 <hr class="docutils" />
 <blockquote>
 <div><dl class="field-list simple">
-<dt class="field-odd">ncv</dt>
-<dd class="field-odd"><p><strong>integer</strong> The dimension of collective variables in the input trajectory.</p>
+<dt class="field-odd">cvsfiles</dt>
+<dd class="field-odd"><p><strong>array of character</strong> The input files of the collective variables. The order of file must follow the increased temperature.</p>
 </dd>
-<dt class="field-even">cvsfiles</dt>
-<dd class="field-even"><p><strong>array of character</strong> The input files of the collective variables. The order of file must follow the increased temperature.</p>
-</dd>
-<dt class="field-odd">kelvinarray</dt>
-<dd class="field-odd"><p><strong>array of double precision</strong> If the <em>kelvinarray</em> parameter has only one value, then all the input file has same temperature. If the <em>kelevinarray</em> parameter has multiple values, then the <em>numFileLevel</em> parameter must be specifed</p>
+<dt class="field-even">kelvinarray</dt>
+<dd class="field-even"><p><strong>array of double precision</strong> If the <em>kelvinarray</em> parameter has only one value, then all the input file has same temperature. If the <em>kelevinarray</em> parameter has multiple values, then the <em>numFileLevel</em> parameter must be specifed</p>
 </dd>
 </dl>
 </div></blockquote>
@@ -293,7 +290,6 @@
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <p>The example of input file for MSM analyze shows below</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&amp;</span><span class="n">msm</span>
-    <span class="n">ndim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
     <span class="n">ncluster</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span>
     <span class="n">lagstep</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
     <span class="n">nstate</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
@@ -303,7 +299,6 @@
 <span class="o">/</span>
 
 <span class="o">&amp;</span><span class="n">trajs</span>
-    <span class="n">ncv</span><span class="o">=</span><span class="mi">2</span>
     <span class="n">kelvinarray</span><span class="o">=</span><span class="mi">300</span>
     <span class="n">cvsfiles</span><span class="o">=</span><span class="s2">&quot;sim1/cvfile&quot;</span><span class="p">,</span> <span class="s2">&quot;sim2/cvfile&quot;</span>
     <span class="n">coorfiles</span> <span class="o">=</span> <span class="s2">&quot;sim1/mdcrd.nc&quot;</span><span class="p">,</span> <span class="s2">&quot;sim2/mdcrd.nc&quot;</span>

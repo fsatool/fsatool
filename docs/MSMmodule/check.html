@@ -211,12 +211,6 @@
 <dt class="field-even">datafile</dt>
 <dd class="field-even"><p><strong>character</strong> The data file, after runing the <cite>msm</cite>, the <cite>cluster_forcheck.txt</cite> will be generated.</p>
 </dd>
-<dt class="field-odd">nsnap</dt>
-<dd class="field-odd"><p><strong>integer</strong> the number of frames</p>
-</dd>
-<dt class="field-even">ncluster</dt>
-<dd class="field-even"><p><strong>integer</strong> the nubmer of cluster</p>
-</dd>
 <dt class="field-odd">lagstart</dt>
 <dd class="field-odd"><p><strong>integer</strong> the start lag time</p>
 </dd>
@@ -232,8 +226,8 @@
 <dt class="field-odd">nits</dt>
 <dd class="field-odd"><p><strong>integer</strong> The <cite>nits</cite> first timescales will be computed. Default values is 5</p>
 </dd>
-<dt class="field-even">lagfactor</dt>
-<dd class="field-even"><p><strong>double precesion</strong> This parameter decides how many lag time needs be to calculated. Default values is 1, which means that lagtime needs to be computed is (lagstart, lagstart+1, lagstart+2, …, lagend). Otherwise, the lagtime needs to be computed are (lagstart, ceiling(lagstart*lagfactor), ceiling(ceiling(lagstart*lagfactor)*lagfactor) ,… )</p>
+<dt class="field-even">lagoffset</dt>
+<dd class="field-even"><p><strong>double precesion</strong> This parameter decides how many lag time needs be to calculated. Default values is 1, which means that lagtime needs to be computed is (lagstart, lagstart+lagoffset*1, lagstart+lagoffset*2, …, lagend).</p>
 </dd>
 </dl>
 </div></blockquote>
@@ -244,8 +238,6 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&amp;</span><span class="n">check</span>
 <span class="n">checkmethod</span><span class="o">=</span><span class="s2">&quot;timescales&quot;</span><span class="p">,</span>
 <span class="n">datafile</span><span class="o">=</span><span class="s2">&quot;../info/cluster_forcheck.txt&quot;</span><span class="p">,</span>
-<span class="n">nsnap</span><span class="o">=</span><span class="mi">200000</span><span class="p">,</span>
-<span class="n">ncluster</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
 <span class="n">lagstart</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
 <span class="n">lagend</span><span class="o">=</span><span class="mi">25</span>
 <span class="o">/</span>
