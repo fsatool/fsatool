@@ -39,3 +39,9 @@ A fast sampling and analysis tool for biomolecules
 
 - Clean the file `make clean`
 - Unpatch the amber source file `./configure unpatch`
+
+## Contributors
+  - Zhang Haomiao
+  - Zhang Haozhe
+  - Shu Zirui
+  - Liao Jun
